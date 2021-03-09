@@ -12,7 +12,7 @@ const taskController = {
       }
     }).exec();
   },
- // check if its needed
+  // check if its needed
   getOne(req, res) {
     res.json({ mesage: 'get one route' });
   },
@@ -24,7 +24,7 @@ const taskController = {
 
     try {
       const result = await Task.findByIdAndUpdate(id, body, options);
-      res.status(200).json({ result });
+      res.status(200).json({ ok: true, result });
     } catch (error) {
       res.status(500).json({ err: error.message });
     }
@@ -39,6 +39,7 @@ const taskController = {
       description: body.description,
       person: body.person,
       color: body.color,
+      column_title: body.column_title,
     });
     task.save((err, taskSaved) => {
       if (err) {
