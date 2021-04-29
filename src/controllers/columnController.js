@@ -1,25 +1,28 @@
+const JWT = require('jsonwebtoken');
 const Column = require('../Schema/columnSchema');
 
 const columnController = {
   addColumn(req, res) {
     const { body } = req;
     const column = new Column({
-      column_id: body.column_id,
+
+      user: body.user_id,
       title: body.title,
     });
     column.save((err, docSaved) => {
-      if (err) { console.log(err.message); } else { res.status(200).json({ docSaved }); }
+      if (err) { console.log(err.message); } else { res.status(200).json({ status: true, docSaved }); }
     });
   },
-  async getallColumn(req, res) {
-    Column.find((error, columns) => {
+  async getallUserColumn(req, res) {
+    const { params } = req;
+    Column.find({ user: { _id: params.id } }, (error, columns) => {
       if (error) {
         res.status(500).json({ ok: false, message: 'Can not get data' });
       }
       if (columns) {
         res.status(200).json({ ok: true, columns });
       }
-    }).exec();
+    }).populate('user').exec();
   },
 
   async updateColum(req, res) {
@@ -29,7 +32,7 @@ const columnController = {
 
     try {
       const result = await Column.findByIdAndUpdate(id, body, options);
-      res.status(200).json({ result });
+      res.status(200).json({ status: true, result });
     } catch (error) {
       res.status(500).json({ err: error.message });
     }
@@ -39,7 +42,7 @@ const columnController = {
     const { id } = req.params;
     Column.findByIdAndRemove(id, (err, columnDeleted) => {
       if (err) {
-        res.json({ ok: false, message: 'Can not delete task' });
+        res.json({ ok: false, message: 'Can not delete Column' });
       }
       if (columnDeleted) {
         res.status(200).json({ ok: true, columnDeleted });

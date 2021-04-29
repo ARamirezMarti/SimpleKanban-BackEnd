@@ -30,9 +30,9 @@ const mongoseDeprecations = {
 
 Mongoose.connect(process.env.MONGODB, mongoseDeprecations, (err) => {
   if (err) {
-    console.log('no se a podido conectar con base de datos');
+    console.log('Can not connect to the Database');
   }
-  console.log('Base de datos conectada');
+  console.log('Database connected');
 });
 
 app.listen(port, () => {
