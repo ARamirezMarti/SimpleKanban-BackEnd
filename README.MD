@@ -4,9 +4,9 @@ NodeJS/express for SimpleKanban. All data is stored in a mongo database.
 
 ## TODO
 [x] CRUD for columns
-[X] CRUD for tasks
-[]  Login
-    []  Login collecion MongoDB
-    []  Login endpoints
-    
+[x] CRUD for tasks
+[x]  Login
+    [x]  Login collecion MongoDB
+    [x]  Login endpoints
+ [ ] Add test
 

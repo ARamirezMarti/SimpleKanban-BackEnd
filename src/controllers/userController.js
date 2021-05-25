@@ -1,19 +1,19 @@
 const JWT = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../Schema/userSchema');
+// TODO: Salt rounds in env variable?
 
 const userController = {
 
   addUser(req, res) {
     const { body } = req;
-    bcrypt.hash(body.password, process.env.SALTED_ROUNDS, (err, passwordHashed) => {
+    bcrypt.hash(body.password, 10, (err, passwordHashed) => {
       if (err) {
         res.status(500).json({
           ok: false,
           err,
         });
       }
-
       const user = new User({
         email: body.user_email,
         password: passwordHashed,
@@ -65,7 +65,6 @@ const userController = {
         }
       });
     } else {
-      /*  User.findOne.exec  manda dos veces los headers, creo  FIXED */
       User.findOne({ email: body.user_email })
         .exec((err, user) => {
           if (err) {
@@ -80,8 +79,6 @@ const userController = {
             });
           }
           if (user) {
-            // TODO: validar email y contraseña
-
             bcrypt.compare(body.password, user.password, (error, correctCredential) => {
               if (error) {
                 res.status(409).json({
@@ -103,12 +100,6 @@ const userController = {
                 });
               }
             });
-
-            /*  if (user.password === body.password) {
-
-            } else {
-
-            } */
           }
         });
     }
