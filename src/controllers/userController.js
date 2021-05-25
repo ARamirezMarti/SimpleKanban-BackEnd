@@ -1,37 +1,45 @@
 const JWT = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../Schema/userSchema');
-// TODO: usar bcrypt para contraseña
 
 const userController = {
 
   addUser(req, res) {
     const { body } = req;
-    const user = new User({
-      email: body.user_email,
-      password: body.password,
-
-    });
-    user.save((err, userSaved) => {
-      const token = JWT.sign(
-        { user },
-        process.env.SECRET_KEY,
-        { expiresIn: process.env.JWT_EXPIRES },
-      );
-
-      const userInfo = { user_email: userSaved.email, user_id: userSaved._id };
+    bcrypt.hash(body.password, process.env.SALTED_ROUNDS, (err, passwordHashed) => {
       if (err) {
         res.status(500).json({
           ok: false,
           err,
         });
-      } else {
-        res.status(200).json({
-          ok: true,
-          userInfo,
-          token,
-        });
       }
+
+      const user = new User({
+        email: body.user_email,
+        password: passwordHashed,
+
+      });
+      user.save((error, userSaved) => {
+        const token = JWT.sign(
+          { user },
+          process.env.SECRET_KEY,
+          { expiresIn: process.env.JWT_EXPIRES },
+        );
+
+        const userInfo = { user_email: userSaved.email, user_id: userSaved._id };
+        if (error) {
+          res.status(500).json({
+            ok: false,
+            error,
+          });
+        } else {
+          res.status(200).json({
+            ok: true,
+            userInfo,
+            token,
+          });
+        }
+      });
     });
   },
 
@@ -74,24 +82,33 @@ const userController = {
           if (user) {
             // TODO: validar email y contraseña
 
-            if (user.password === body.password) {
-              const token = JWT.sign(
-                { user },
-                process.env.SECRET_KEY,
-                { expiresIn: process.env.JWT_EXPIRES },
-              );
-              const userInfo = { user_email: user.email, user_id: user._id };
-              res.status(200).json({
-                status: true,
-                userInfo,
-                token,
-              });
+            bcrypt.compare(body.password, user.password, (error, correctCredential) => {
+              if (error) {
+                res.status(409).json({
+                  status: false,
+                  message: 'Incorrect validation',
+                });
+              }
+              if (correctCredential) {
+                const token = JWT.sign(
+                  { user },
+                  process.env.SECRET_KEY,
+                  { expiresIn: process.env.JWT_EXPIRES },
+                );
+                const userInfo = { user_email: user.email, user_id: user._id };
+                res.status(200).json({
+                  status: true,
+                  userInfo,
+                  token,
+                });
+              }
+            });
+
+            /*  if (user.password === body.password) {
+
             } else {
-              res.status(409).json({
-                status: false,
-                message: 'Incorrect validation',
-              });
-            }
+
+            } */
           }
         });
     }
