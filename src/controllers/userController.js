@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const JWT = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../Schema/userSchema');

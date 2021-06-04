@@ -1,4 +1,3 @@
-const JWT = require('jsonwebtoken');
 const Column = require('../Schema/columnSchema');
 
 const columnController = {
@@ -10,7 +9,7 @@ const columnController = {
       title: body.title,
     });
     column.save((err, docSaved) => {
-      if (err) { console.log(err.message); } else { res.status(200).json({ status: true, docSaved }); }
+      if (err) { console.log(err.message); } else {res.status(200).json({ status: true, docSaved }); }
     });
   },
   async getallUserColumn(req, res) {
@@ -34,7 +33,7 @@ const columnController = {
       const result = await Column.findByIdAndUpdate(id, body, options);
       res.status(200).json({ status: true, result });
     } catch (error) {
-      res.status(500).json({ err: error.message });
+      res.status(500).json({ err: "Can not update the column" });
     }
   },
 
@@ -42,6 +41,7 @@ const columnController = {
     const { id } = req.params;
     Column.findByIdAndRemove(id, (err, columnDeleted) => {
       if (err) {
+        console.log(err);
         res.json({ ok: false, message: 'Can not delete Column' });
       }
       if (columnDeleted) {

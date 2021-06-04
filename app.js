@@ -12,11 +12,29 @@ const port = 5555;
 const morgan = require('morgan');
 
 const path = require('path');
+const fs = require('fs')
+const logDirPath = path.join(__dirname, 'logs');
+
+if(fs.existsSync(logDirPath)){
+  const logFilePath = path.join(__dirname, 'logs','access.log')
+  app.use(morgan('common', {
+    stream: fs.createWriteStream(logFilePath, {flags:'a'})
+  }));
+  
+}else{
+  fs.mkdirSync(path.join(__dirname, 'logs'))
+  app.use(morgan('common', {
+    stream: fs.createWriteStream(logDirPath, {flags:'xw'})
+  }));
+}
+
+
 require('dotenv').config();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
+ 
 
 // eslint-disable-next-line import/no-dynamic-require
 app.use('/api', require(path.join(__dirname, './src/routes/routes')));
