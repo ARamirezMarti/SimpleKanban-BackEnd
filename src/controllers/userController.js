@@ -7,12 +7,14 @@ const User = require('../Schema/userSchema');
 const userController = {
 
   addUser(req, res) {
+    
     const { body } = req;
-    bcrypt.hash(body.password, 10, (err, passwordHashed) => {
+    console.log(body);
+    bcrypt.hash(body.user_password, 10, (err, passwordHashed) => {
       if (err) {
         res.status(500).json({
           ok: false,
-          err,
+          err:err.message,
         });
       }
       const user = new User({
@@ -80,7 +82,7 @@ const userController = {
             });
           }
           if (user) {
-            bcrypt.compare(body.password, user.password, (error, correctCredential) => {
+            bcrypt.compare(body.user_password, user.password, (error, correctCredential) => {
               if (error) {
                 res.status(409).json({
                   status: false,

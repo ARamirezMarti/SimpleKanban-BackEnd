@@ -1,27 +1,2 @@
-::1 - - [04/Jun/2021:21:30:06 +0000] "POST /api/user HTTP/1.1" 200 91
-::1 - - [04/Jun/2021:21:30:06 +0000] "GET /api/getall HTTP/1.1" 304 -
-::1 - - [04/Jun/2021:21:30:06 +0000] "GET /api/getallusercolumns/60ad635aafff7e3d6d405337 HTTP/1.1" 200 639
-::1 - - [04/Jun/2021:21:30:08 +0000] "PUT /api/updatetask/60ba91682b3e26e16d1e826d HTTP/1.1" 200 172
-::1 - - [04/Jun/2021:21:30:08 +0000] "GET /api/getall HTTP/1.1" 200 3350
-::1 - - [04/Jun/2021:21:31:57 +0000] "POST /api/addtask HTTP/1.1" 200 173 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:31:57 +0000] "GET /api/getall HTTP/1.1" 200 3500 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:18 +0000] "DELETE /api/deletetask/60ba91232b3e26e16d1e826a HTTP/1.1" 200 192 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:18 +0000] "GET /api/getall HTTP/1.1" 200 3333 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:19 +0000] "DELETE /api/deletetask/60ba914b2b3e26e16d1e826b HTTP/1.1" 200 205 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:19 +0000] "GET /api/getall HTTP/1.1" 200 3153 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:19 +0000] "DELETE /api/deletetask/60ba914f2b3e26e16d1e826c HTTP/1.1" 200 205 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:19 +0000] "GET /api/getall HTTP/1.1" 200 2973 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:20 +0000] "DELETE /api/deletetask/60ba91682b3e26e16d1e826d HTTP/1.1" 200 177 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:20 +0000] "GET /api/getall HTTP/1.1" 200 2821 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:20 +0000] "DELETE /api/deletetask/60ba91142b3e26e16d1e8269 HTTP/1.1" 200 203 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:20 +0000] "GET /api/getall HTTP/1.1" 200 2643 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:22 +0000] "DELETE /api/deletetask/60ba916f2b3e26e16d1e826e HTTP/1.1" 200 171 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:23 +0000] "GET /api/getall HTTP/1.1" 200 2497 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:23 +0000] "DELETE /api/deletetask/60ba92392b3e26e16d1e8270 HTTP/1.1" 200 165 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:23 +0000] "GET /api/getall HTTP/1.1" 200 2357 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:23 +0000] "DELETE /api/deletetask/60ba9bcd11fd961361aaf364 HTTP/1.1" 200 175 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:24 +0000] "GET /api/getall HTTP/1.1" 200 2207 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:25 +0000] "DELETE /api/deletetask/60ba92332b3e26e16d1e826f HTTP/1.1" 200 171 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:25 +0000] "GET /api/getall HTTP/1.1" 200 2061 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:25 +0000] "DELETE /api/deletetask/60ba92402b3e26e16d1e8271 HTTP/1.1" 200 171 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-::1 - - [04/Jun/2021:21:32:25 +0000] "GET /api/getall HTTP/1.1" 200 1915 "http://localhost:3000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
+::1 - - [09/Jun/2021:20:15:18 +0000] "POST /api/user HTTP/1.1" 200 423
+::1 - - [09/Jun/2021:20:15:18 +0000] "GET /api/getallusercolumns/60bf33398c2b4f0012fe39f8 HTTP/1.1" 200 637

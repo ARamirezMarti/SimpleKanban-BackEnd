@@ -8,23 +8,23 @@ app.use(cors());
 
 const Mongoose = require('mongoose');
 
-const port = 5555;
 const morgan = require('morgan');
 
 const path = require('path');
 const fs = require('fs')
 const logDirPath = path.join(__dirname, 'logs');
+const logFilePath = path.join(__dirname, 'logs','access.log')
+
 
 if(fs.existsSync(logDirPath)){
-  const logFilePath = path.join(__dirname, 'logs','access.log')
   app.use(morgan('common', {
     stream: fs.createWriteStream(logFilePath, {flags:'a'})
   }));
   
-}else{
-  fs.mkdirSync(path.join(__dirname, 'logs'))
+}else if(!fs.existsSync(logDirPath)){
+  fs.mkdirSync(logDirPath)
   app.use(morgan('common', {
-    stream: fs.createWriteStream(logDirPath, {flags:'xw'})
+    stream: fs.createWriteStream(logFilePath, {flags:'xw'})
   }));
 }
 
@@ -53,6 +53,6 @@ Mongoose.connect(process.env.MONGODB, mongoseDeprecations, (err) => {
   console.log('Database connected');
 });
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Listening on port ${process.env.PORT}`);
 });
